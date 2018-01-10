@@ -17,10 +17,7 @@
 
     <modules>
         <module>kernels/jvm</module>
-        <module>externals/antlr</module>
-        <module>embeddeds/groovy/GroovuinoML</module>
-        <module>embeddeds/scala</module>
-        <module>embeddeds/java</module>
-
+        <module>embeded/groovy/GroovuinoML</module>
+        <module>external/antlr</module>
     </modules>
 </project>
