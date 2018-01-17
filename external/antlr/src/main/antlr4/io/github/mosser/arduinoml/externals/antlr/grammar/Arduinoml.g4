@@ -15,9 +15,9 @@ bricks          :   (sensor|actuator)+;
     location    :   id=IDENTIFIER ':' port=PORT_NUMBER;
 
 states          :   state+;
-    state       :   initial? name=IDENTIFIER '{'  action+ ('and|or'? transition)+ '}';
+    state       :   initial? name=IDENTIFIER '{'  action+ transition '}';
     action      :   receiver=IDENTIFIER '<=' value=SIGNAL;
-    transition  :   trigger=IDENTIFIER 'is' value=SIGNAL '=>' next=IDENTIFIER ;
+    transition  :   (('and'|'or')? trigger=IDENTIFIER 'is' value=SIGNAL)+ '=>' next=IDENTIFIER ;
     initial     :   '->';
 
 /*****************
