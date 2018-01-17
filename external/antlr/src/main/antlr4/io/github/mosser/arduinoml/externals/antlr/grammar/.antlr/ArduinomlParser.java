@@ -379,9 +379,6 @@ public class ArduinomlParser extends Parser {
 
 	public static class StateContext extends ParserRuleContext {
 		public Token name;
-		public TransitionContext transition() {
-			return getRuleContext(TransitionContext.class,0);
-		}
 		public TerminalNode IDENTIFIER() { return getToken(ArduinomlParser.IDENTIFIER, 0); }
 		public InitialContext initial() {
 			return getRuleContext(InitialContext.class,0);
@@ -391,6 +388,12 @@ public class ArduinomlParser extends Parser {
 		}
 		public ActionContext action(int i) {
 			return getRuleContext(ActionContext.class,i);
+		}
+		public List<TransitionContext> transition() {
+			return getRuleContexts(TransitionContext.class);
+		}
+		public TransitionContext transition(int i) {
+			return getRuleContext(TransitionContext.class,i);
 		}
 		public StateContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -440,9 +443,21 @@ public class ArduinomlParser extends Parser {
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-			setState(61);
-			transition();
-			setState(62);
+			setState(62); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(61);
+				transition();
+				}
+				}
+				setState(64); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( _la==IDENTIFIER );
+			setState(66);
 			match(T__5);
 			}
 		}
@@ -474,11 +489,11 @@ public class ArduinomlParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(64);
+			setState(68);
 			((ActionContext)_localctx).receiver = match(IDENTIFIER);
-			setState(65);
+			setState(69);
 			match(T__6);
-			setState(66);
+			setState(70);
 			((ActionContext)_localctx).value = match(SIGNAL);
 			}
 		}
@@ -514,15 +529,15 @@ public class ArduinomlParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(68);
-			((TransitionContext)_localctx).trigger = match(IDENTIFIER);
-			setState(69);
-			match(T__7);
-			setState(70);
-			((TransitionContext)_localctx).value = match(SIGNAL);
-			setState(71);
-			match(T__8);
 			setState(72);
+			((TransitionContext)_localctx).trigger = match(IDENTIFIER);
+			setState(73);
+			match(T__7);
+			setState(74);
+			((TransitionContext)_localctx).value = match(SIGNAL);
+			setState(75);
+			match(T__8);
+			setState(76);
 			((TransitionContext)_localctx).next = match(IDENTIFIER);
 			}
 		}
@@ -550,7 +565,7 @@ public class ArduinomlParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(74);
+			setState(78);
 			match(T__9);
 			}
 		}
@@ -566,25 +581,26 @@ public class ArduinomlParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\22O\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\22S\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
 		"\f\t\f\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\4\3\4\6\4#\n\4\r\4\16\4$\3\5"+
 		"\3\5\3\5\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\6\b\62\n\b\r\b\16\b\63\3\t\5"+
-		"\t\67\n\t\3\t\3\t\3\t\6\t<\n\t\r\t\16\t=\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3"+
-		"\13\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24"+
-		"\26\2\2\2H\2\30\3\2\2\2\4\35\3\2\2\2\6\"\3\2\2\2\b&\3\2\2\2\n)\3\2\2\2"+
-		"\f,\3\2\2\2\16\61\3\2\2\2\20\66\3\2\2\2\22B\3\2\2\2\24F\3\2\2\2\26L\3"+
-		"\2\2\2\30\31\5\4\3\2\31\32\5\6\4\2\32\33\5\16\b\2\33\34\7\2\2\3\34\3\3"+
-		"\2\2\2\35\36\7\3\2\2\36\37\7\16\2\2\37\5\3\2\2\2 #\5\b\5\2!#\5\n\6\2\""+
-		" \3\2\2\2\"!\3\2\2\2#$\3\2\2\2$\"\3\2\2\2$%\3\2\2\2%\7\3\2\2\2&\'\7\4"+
-		"\2\2\'(\5\f\7\2(\t\3\2\2\2)*\7\5\2\2*+\5\f\7\2+\13\3\2\2\2,-\7\16\2\2"+
-		"-.\7\6\2\2./\7\r\2\2/\r\3\2\2\2\60\62\5\20\t\2\61\60\3\2\2\2\62\63\3\2"+
-		"\2\2\63\61\3\2\2\2\63\64\3\2\2\2\64\17\3\2\2\2\65\67\5\26\f\2\66\65\3"+
-		"\2\2\2\66\67\3\2\2\2\678\3\2\2\289\7\16\2\29;\7\7\2\2:<\5\22\n\2;:\3\2"+
-		"\2\2<=\3\2\2\2=;\3\2\2\2=>\3\2\2\2>?\3\2\2\2?@\5\24\13\2@A\7\b\2\2A\21"+
-		"\3\2\2\2BC\7\16\2\2CD\7\t\2\2DE\7\17\2\2E\23\3\2\2\2FG\7\16\2\2GH\7\n"+
-		"\2\2HI\7\17\2\2IJ\7\13\2\2JK\7\16\2\2K\25\3\2\2\2LM\7\f\2\2M\27\3\2\2"+
-		"\2\7\"$\63\66=";
+		"\t\67\n\t\3\t\3\t\3\t\6\t<\n\t\r\t\16\t=\3\t\6\tA\n\t\r\t\16\tB\3\t\3"+
+		"\t\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\2\2\r\2\4"+
+		"\6\b\n\f\16\20\22\24\26\2\2\2M\2\30\3\2\2\2\4\35\3\2\2\2\6\"\3\2\2\2\b"+
+		"&\3\2\2\2\n)\3\2\2\2\f,\3\2\2\2\16\61\3\2\2\2\20\66\3\2\2\2\22F\3\2\2"+
+		"\2\24J\3\2\2\2\26P\3\2\2\2\30\31\5\4\3\2\31\32\5\6\4\2\32\33\5\16\b\2"+
+		"\33\34\7\2\2\3\34\3\3\2\2\2\35\36\7\3\2\2\36\37\7\16\2\2\37\5\3\2\2\2"+
+		" #\5\b\5\2!#\5\n\6\2\" \3\2\2\2\"!\3\2\2\2#$\3\2\2\2$\"\3\2\2\2$%\3\2"+
+		"\2\2%\7\3\2\2\2&\'\7\4\2\2\'(\5\f\7\2(\t\3\2\2\2)*\7\5\2\2*+\5\f\7\2+"+
+		"\13\3\2\2\2,-\7\16\2\2-.\7\6\2\2./\7\r\2\2/\r\3\2\2\2\60\62\5\20\t\2\61"+
+		"\60\3\2\2\2\62\63\3\2\2\2\63\61\3\2\2\2\63\64\3\2\2\2\64\17\3\2\2\2\65"+
+		"\67\5\26\f\2\66\65\3\2\2\2\66\67\3\2\2\2\678\3\2\2\289\7\16\2\29;\7\7"+
+		"\2\2:<\5\22\n\2;:\3\2\2\2<=\3\2\2\2=;\3\2\2\2=>\3\2\2\2>@\3\2\2\2?A\5"+
+		"\24\13\2@?\3\2\2\2AB\3\2\2\2B@\3\2\2\2BC\3\2\2\2CD\3\2\2\2DE\7\b\2\2E"+
+		"\21\3\2\2\2FG\7\16\2\2GH\7\t\2\2HI\7\17\2\2I\23\3\2\2\2JK\7\16\2\2KL\7"+
+		"\n\2\2LM\7\17\2\2MN\7\13\2\2NO\7\16\2\2O\25\3\2\2\2PQ\7\f\2\2Q\27\3\2"+
+		"\2\2\b\"$\63\66=B";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
