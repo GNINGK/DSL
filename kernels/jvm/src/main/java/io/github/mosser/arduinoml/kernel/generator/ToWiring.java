@@ -61,10 +61,24 @@ public class ToWiring extends Visitor<StringBuffer> {
 			action.accept(this);
 		}
 
-		if (state.getTransition() != null) {
+		if(!state.getTransitions().isEmpty()) {
 			w("  boolean guard = millis() - time > debounce;");
 			context.put(CURRENT_STATE, state);
-			state.getTransition().accept(this);
+
+			w(String.format("  if( guard "));
+
+			for(Transition transition : state.getTransitions()) {
+				w(String.format("&& digitalRead(%d) == %s ", transition.getSensor().getPin(), transition.getValue()));
+			}
+
+			w(String.format(") {\n"));
+
+			w("    time = millis();");
+			w(String.format("    state_%s();",state.getTransitions().get(0).getNext().getName()));
+			w("  } else {");
+			w(String.format("    state_%s();",((State) context.get(CURRENT_STATE)).getName()));
+			w("  }");
+
 			w("}\n");
 		}
 
