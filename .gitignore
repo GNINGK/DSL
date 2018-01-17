@@ -1,2 +1,5 @@
 *.iml
 .idea
+external/antlr/.settings/org.eclipse.jdt.core.prefs
+external/antlr/.settings/org.eclipse.core.resources.prefs
+external/antlr/.settings/org.eclipse.m2e.core.prefs

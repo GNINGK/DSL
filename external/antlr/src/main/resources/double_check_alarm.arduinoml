@@ -1,0 +1,22 @@
+application buttonBuzzer
+
+# Declaring bricks
+sensor buttonA: 9
+sensor buttonB: 8
+actuator buzzer: 11
+
+# Declaring states
+onA {
+    buzzer <= LOW
+    buttonB is HIGH => onAB
+}
+
+onAB {
+    buzzer <= LOW
+    buttonB is HIGH => onAB
+}
+
+-> off {
+    buzzer <= LOW
+    buttonA is HIGH => onA
+}

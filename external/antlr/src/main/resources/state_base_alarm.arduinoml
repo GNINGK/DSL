@@ -1,4 +1,4 @@
-application redButton
+application buttonBuzzer
 
 # Declaring bricks
 sensor button: 9
@@ -6,6 +6,11 @@ actuator led: 12
 
 # Declaring states
 on {
+    led <= HIGH
+    button is LOW => onB
+}
+
+onB {
     led <= HIGH
     button is HIGH => off
 }
