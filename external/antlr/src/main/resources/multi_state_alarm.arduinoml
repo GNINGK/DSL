@@ -1,0 +1,49 @@
+application buttonBuzzer
+
+# Declaring bricks
+sensor button: 9
+actuator buzzer: 11
+actuator led: 12
+
+# Declaring states
+buzzer {
+    led <= LOW
+    buzzer <= HIGH
+    button is LOW => buzzerA
+}
+
+buzzerA {
+    led <= LOW
+    buzzer <= HIGH
+    button is HIGH => ledA
+}
+
+ledA {
+    led <= HIGH
+    buzzer <= LOW
+    button is LOW => ledB
+}
+
+ledB {
+    led <= HIGH
+    buzzer <= LOW
+    button is HIGH => waitA
+}
+
+waitA {
+    led <= LOW
+    buzzer <= LOW
+    button is LOW => waitB
+}
+
+waitB {
+    led <= LOW
+    buzzer <= LOW
+    button is HIGH => buzzer
+}
+
+-> off {
+    led <= LOW
+    buzzer <= LOW
+    button is HIGH => buzzer
+}
