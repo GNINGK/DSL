@@ -22,8 +22,8 @@ public class GroovuinoMLModel {
 	private Binding binding;
 	
 	public GroovuinoMLModel(Binding binding) {
-		this.bricks = new ArrayList<Brick>();
-		this.states = new ArrayList<State>();
+		this.bricks = new ArrayList<>();
+		this.states = new ArrayList<>();
 		this.binding = binding;
 	}
 	
@@ -52,11 +52,12 @@ public class GroovuinoMLModel {
 		this.binding.setVariable(name, state);
 	}
 	
-	public void createTransition(State from, State to, Sensor sensor, SIGNAL value) {
+	public void createTransition(State from, State to, Sensor sensor, SIGNAL value, boolean isAnd) {
 		Transition transition = new Transition();
 		transition.setNext(to);
 		transition.setSensor(sensor);
 		transition.setValue(value);
+		transition.setIsAnd(isAnd);
 		from.addTransition(transition);
 	}
 	

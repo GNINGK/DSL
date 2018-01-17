@@ -9,6 +9,7 @@ public class Transition implements Visitable {
 	private State next;
 	private Sensor sensor;
 	private SIGNAL value;
+	private boolean isAnd = true;
 
 
 	public State getNext() {
@@ -38,5 +39,13 @@ public class Transition implements Visitable {
 	@Override
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
+	}
+
+	public boolean isAnd() {
+		return isAnd;
+	}
+
+	public void setIsAnd(boolean isAnd) {
+		this.isAnd = isAnd;
 	}
 }
