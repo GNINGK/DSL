@@ -62,7 +62,7 @@ public class ModelBuilder extends ArduinomlBaseListener {
             t.setSensor(binding.trigger);
             t.setValue(binding.value);
             t.setNext(states.get(binding.to));
-            states.get(key).setTransition(t);
+            states.get(key).addTransition(t);
         });
         this.built = true;
     }
