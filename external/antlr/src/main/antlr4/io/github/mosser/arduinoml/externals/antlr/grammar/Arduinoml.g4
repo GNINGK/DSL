@@ -17,14 +17,14 @@ bricks          :   (sensor|actuator)+;
 states          :   state+;
     state       :   initial? name=IDENTIFIER '{'  action+ transition '}';
     action      :   receiver=IDENTIFIER '<=' value=SIGNAL;
-    transition  :   trigger=IDENTIFIER 'is' value=SIGNAL '=>' next=IDENTIFIER ;
+    transition  :   (('and'|'or')? trigger=IDENTIFIER 'is' value=SIGNAL)+ '=>' next=IDENTIFIER ;
     initial     :   '->';
 
 /*****************
  ** Lexer rules **
  *****************/
 
-PORT_NUMBER     :   [1-9] | '11' | '12';
+PORT_NUMBER     :   [1-9] | '10' | '11' | '12' | '13';
 IDENTIFIER      :   LOWERCASE (LOWERCASE|UPPERCASE)+;
 SIGNAL          :   'HIGH' | 'LOW';
 
